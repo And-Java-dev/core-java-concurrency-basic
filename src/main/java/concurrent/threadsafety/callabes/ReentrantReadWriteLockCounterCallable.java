@@ -1,0 +1,20 @@
+package concurrent.threadsafety.callabes;
+
+import concurrent.threadsafety.services.ReentrantReadWriteLockCounter;
+
+import java.util.concurrent.Callable;
+
+public class ReentrantReadWriteLockCounterCallable implements Callable<Integer> {
+
+    private  final ReentrantReadWriteLockCounter counter;
+
+    public ReentrantReadWriteLockCounterCallable(ReentrantReadWriteLockCounter counter){
+        this.counter = counter;
+    }
+
+    @Override
+    public Integer call() throws Exception {
+        counter.incrementCounter();
+        return counter.getCounter();
+    }
+}
